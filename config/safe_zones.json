@@ -1,0 +1,5 @@
+{
+  "balanced": {"bottom": 440, "right": 140, "left": 60, "top": 150, "source_url": null, "verified_on": null, "notes": "Initial conservative profile; verify against current platform overlays."},
+  "strict": {"bottom": 576, "right": 192, "left": 60, "top": 288, "source_url": null, "verified_on": null, "notes": "Initial conservative profile."},
+  "ad_template": {"bottom": 672, "right": 192, "left": 48, "top": 288, "source_url": null, "verified_on": null, "notes": "Initial conservative profile."}
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": 5,
+  "models": {
+    "whisper_base": {
+      "license": "MIT",
+      "model_card_url": "https://huggingface.co/Systran/faster-whisper-base/raw/ebe41f70d5b6dfa9166e2c581c45c9c0cfc57b66/README.md",
+      "upstream_revision": "ebe41f70d5b6dfa9166e2c581c45c9c0cfc57b66",
+      "source": "Existing user-local cache; exact upstream blob/LFS hashes checked",
+      "kind": "ctranslate2_asr",
+      "files": {
+        "model": {
+          "path": "assets/models/whisper_base/model.bin",
+          "sha256": "d01c3014881c9c6f3133c182f3d2887eb6ca1c789a7538c5c007196857a0a6a9",
+          "size_bytes": 145217532
+        },
+        "config": {
+          "path": "assets/models/whisper_base/config.json",
+          "sha256": "56a6d8110d311f19c8f0471e562832c7527f146b567275bfca59fcf7c184da9a",
+          "size_bytes": 2309
+        },
+        "tokenizer": {
+          "path": "assets/models/whisper_base/tokenizer.json",
+          "sha256": "fb7b63191e9bb045082c79fd742a3106a12c99513ab30df4a0d47fa6cb6fd0ab",
+          "size_bytes": 2203239
+        },
+        "vocabulary": {
+          "path": "assets/models/whisper_base/vocabulary.txt",
+          "sha256": "34ce3fe1c5041027b3f8d42912270993f986dbc4bb34cf27f951e34a1e453913",
+          "size_bytes": 459861
+        },
+        "model_card": {
+          "path": "assets/models/whisper_base/MODEL_CARD.md",
+          "sha256": "b922acef3616e27b1d416260b63ba7114c732f0315012006781af2da69cd1ebf"
+        },
+        "license_text": {
+          "path": "assets/models/whisper_base/LICENSE",
+          "sha256": "b5d65a59060e68c4ff940e1eddfa6f94b2d68fdf58ed7f4dd57721c997e35e9d"
+        }
+      },
+      "accuracy_verified": false,
+      "default_enabled": false
+    },
+    "face_landmarker": {
+      "license": "Apache-2.0",
+      "model_card_url": "https://ai.google.dev/edge/mediapipe/solutions/vision/face_landmarker",
+      "upstream_revision": "mediapipe-face-landmarker-float16-latest",
+      "source": "MediaPipe Tasks face landmarker model downloaded for local CPU use",
+      "kind": "mediapipe_tasks_face_landmarker",
+      "files": {
+        "model": {
+          "path": "assets/models/mediapipe/face_landmarker.task",
+          "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff",
+          "size_bytes": 3758596
+        }
+      },
+      "accuracy_verified": false,
+      "default_enabled": false
+    },
+    "duo_diarization": {
+      "license": "Apache-2.0",
+      "component_licenses": {
+        "segmentation": "MIT",
+        "embedding": "Apache-2.0"
+      },
+      "model_card_url": "https://huggingface.co/funasr/campplus/raw/e4b6ede7ce16997aff4ae69fbca1f0175e2afede/README.md",
+      "source": "Explicit setup: official sherpa converted pyannote segmentation-3.0 and FunASR CAM++ common weights; no implicit network access",
+      "source_urls": {
+        "embedding": "https://github.com/k2-fsa/sherpa-onnx/releases/download/speaker-recongition-models/3dspeaker_speech_campplus_sv_zh-cn_16k-common.onnx",
+        "segmentation": "https://github.com/k2-fsa/sherpa-onnx/releases/download/speaker-segmentation-models/sherpa-onnx-pyannote-segmentation-3-0.tar.bz2",
+        "segmentation_card": "https://huggingface.co/pyannote/segmentation-3.0"
+      },
+      "kind": "sherpa_onnx_diarization",
+      "num_clusters": -1,
+      "threshold": 0.5,
+      "accuracy_verified": false,
+      "default_enabled": false,
+      "files": {
+        "embedding": {
+          "path": "assets/models/duo_diarization/embedding.onnx",
+          "sha256": "f682b514c05d947ee3fa91cd6ec6c5c7543479a128373fa29b1faedccd21fd11",
+          "size_bytes": 28281138
+        },
+        "segmentation": {
+          "path": "assets/models/duo_diarization/segmentation.onnx",
+          "sha256": "220ad67ca923bef2fa91f2390c786097bf305bceb5e261d4af67b38e938e1079",
+          "size_bytes": 5992913
+        },
+        "embedding_card": {
+          "path": "assets/models/duo_diarization/EMBEDDING_MODEL_CARD.md",
+          "sha256": "c6025ccc42e290640f44e06f0742c584b99afe738bb819d74889330c692446f9",
+          "size_bytes": 2020
+        },
+        "segmentation_card": {
+          "path": "assets/models/duo_diarization/SEGMENTATION_MODEL_CARD.md",
+          "sha256": "0380ed76a50efcc421dc62f251ed06e8349688466beac3177bee6e00dc336bfc",
+          "size_bytes": 115
+        },
+        "segmentation_license": {
+          "path": "assets/models/duo_diarization/SEGMENTATION_LICENSE",
+          "sha256": "14d7016ad68e7394d6e6b78d96cc2ae431c905287b89674cfdf021e79e62b8ba",
+          "size_bytes": 1061
+        }
+      }
+    }
+  },
+  "instructions": "Register each offline model with license (Apache-2.0/MIT/BSD/CC0), model_card_url, and files mapping roles to project-relative path and SHA-256. No downloads occur on run. ONNX text models require model and tokenizer; sherpa diarization requires segmentation and embedding."
+}

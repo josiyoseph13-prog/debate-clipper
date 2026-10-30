@@ -1,0 +1,10 @@
+name: local_research_tools
+title: Local research tools
+description: Polite local web research for Pax — collect public web pages (title, date, author, readable text) from a list of URLs with robots.txt enforcement, rate limiting, deduplication, and JSONL/CSV export; probe YouTube video metadata and transcripts without downloading media. Use for source gathering, debate research, and monitoring prep. All failures (robots denials, HTTP errors, blocked platforms) are reported as data, never bypassed.
+include_in_prompt: true
+availability:
+  confidential_vm: true
+  needs_speech: false
+skill_improvement:
+  managed: true
+  needs_review: true

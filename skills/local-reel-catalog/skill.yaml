@@ -1,0 +1,10 @@
+name: local_reel_catalog
+title: Local reel catalog
+description: Build a catalog of Instagram reels/videos shared with the user (for example reels a contact sent in DMs) — identify each video, fetch its author, date, link, full caption and topic, and write a clean list (JSONL + CSV + a plain-words summary). Use whenever the user asks to scrape, collect, catalog, list, or research videos/reels someone sent them, or to say what each shared video talks about.
+include_in_prompt: true
+availability:
+  confidential_vm: true
+  needs_speech: false
+skill_improvement:
+  managed: true
+  needs_review: true

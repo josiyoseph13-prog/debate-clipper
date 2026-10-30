@@ -1,0 +1,12 @@
+# Normalize line endings in the repo; check out as-is per platform
+* text=auto
+
+# Binary files (never diff/merge as text)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.onnx binary

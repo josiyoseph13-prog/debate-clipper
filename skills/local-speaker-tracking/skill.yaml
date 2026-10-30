@@ -1,0 +1,28 @@
+name: local_speaker_tracking
+title: Local speaker tracking
+description: Speaker-tracking verification for Debate Clipper from Pax's side — who is on screen, whether framing follows speakers without jumps, what evidence an active-speaker claim rests on, and the state of diarization. Use whenever a Debate Clipper task involves speaker framing, the Director, dc/speaker_frame.py, dc/framing.py, dc/diarization.py, or evaluating a tracking/framing change.
+include_in_prompt: true
+availability:
+  confidential_vm: true
+  needs_speech: false
+skill_improvement:
+  managed: true
+  needs_review: false
+  status: retired
+  evidence_handles:
+  - assistant-msg-8af1be74
+  - 55153f7b
+  - assistant-msg-f3139adf
+  - 254d68cc
+  - 911fda15
+  - 619ae5c7
+  - local_ffmpeg_video revision f0f5ec98ac36652044620c1d6b21fe02435dfd6ed9d5d959724a0f010e6b8cc4
+  - local_speaker_tracking revision 163bd229dd9a6f6b4766b7960b647aa3899ecdb0557163e0af5d55995f33dcb0
+  measurement:
+    proxy_metric_id: objective_success_rate
+    success_criterion: Over at least 3 verified exports in the window, no verification report claims a pass from fewer frames than one every 4 seconds plus segment and speaker change boundaries, and the user reports no visual defect in a clip already claimed verified. Keep the merged skill only if both hold, otherwise restore the retired speaker tracking skill.
+    window_days: 14
+  rationale: Retirement half of the same consolidation. Local speaker tracking overlapped local_ffmpeg_video on the same Debate Clipper verification work, and its stronger frame series rule was not present in the media skill that a video task triggers first, which contributed to the single frame check admitted in assistant-msg-f3139adf after the user found defects in all clips (254d68cc). Its full method, including the frame series, the camera and zoom QA limits, the unconfigured diarization warning, manual assignment winning over detection, occlusion behavior and the A/B comparison method, is carried into the merged local_ffmpeg_video proposal in this same batch under the same finding, so no guidance is lost when this document retires.
+  review_after: 2026-10-28T00:45:43.326575+00:00
+  reviewed_at: 2026-10-14T00:45:43.326575+00:00
+  run_id: sirun_648659808bbf4ee781538f871796ceca

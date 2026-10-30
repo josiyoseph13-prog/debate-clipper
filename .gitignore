@@ -1,0 +1,49 @@
+.venv/
+__pycache__/
+*.pyc
+input/*
+transcripts/*
+clips/*
+output/*
+work/*
+assets/models/whisper_base/
+assets/sfx/*
+!assets/.gitkeep
+
+# --- Added by Pax for the GitHub repo (2026-10-30): code only ---
+node_modules/
+.pytest_cache/
+.ruff_cache/
+*.sqlite
+*.sqlite3
+*.db
+jobs.sqlite
+exports/
+night_out/
+backups/
+.bak_*/
+input_hd/
+golden accuracy video/
+reference videos/
+reference image/
+*.mp4
+*.mkv
+*.webm
+*.mov
+*.wav
+*.m4a
+*.part
+*.ytdl
+.env
+.env.*
+*cookies*.txt
+*cookie*.json
+*.pem
+*.key
+*.bak
+*.bak2
+*.bak3
+*~tplv-*.jpg
+reports/ 
+*.log 
+*.bak_* 

@@ -1,0 +1,26 @@
+name: recovered_skill_notes
+title: Recovered skill notes
+description: Local skill notes preserved from the previous layout and awaiting review.
+category: Learning and customization
+include_in_prompt: true
+skill_improvement:
+  managed: true
+  needs_review: false
+  status: retired
+  evidence_handles:
+  - recovered_skill_notes revision 67adf91e7d153c68909ad2f7d166c1f6b24a86efdcfe476d9147f95c72298cf2
+  - sirun_7c441dd66ea444c793973134156c22fb
+  - sirun_a1b940a290854908a3b7d74afa3d792d
+  - sirun_7539bfd7acd5482ab8fff72c6a64200d
+  - sirun_4dc8c69cf6114bea82de2c8c66ad0d07
+  - sirun_2d76d6eb9657491a93a1f093d1c25fa2
+  - sirun_1abb87f219ba4e0dae7b8a44e971a684
+  - sirun_b78eafb1e4c445b8a982eb1a553bae9c
+  measurement:
+    proxy_metric_id: objective_success_rate
+    success_criterion: Over the 14 day window, no run or conversation needs a method that existed only in the recovered notes (all seven references state no skill or tool surface changed), and skill discovery no longer surfaces recovered_skill_notes as an active skill. Restore it only if a later task identifies a concrete method that was lost with it.
+    window_days: 14
+  rationale: 'Review of the recovered notes is complete and there is nothing to move. All seven files under recovered-skill-notes/references are self-improvement lifecycle projections from 2026-10-07 to 2026-10-13 (sirun_7c441dd66ea444c793973134156c22fb, sirun_a1b940a290854908a3b7d74afa3d792d, sirun_7539bfd7acd5482ab8fff72c6a64200d, sirun_4dc8c69cf6114bea82de2c8c66ad0d07, sirun_2d76d6eb9657491a93a1f093d1c25fa2, sirun_1abb87f219ba4e0dae7b8a44e971a684, sirun_b78eafb1e4c445b8a982eb1a553bae9c) and every one states verbatim that no skill or tool surface changed in its run, so they carry no reusable method, command or correction. The real guidance from this period already lives in managed active skills, for example the many-moments verification method in local_ffmpeg_video, which is still inside its measurement window until 2026-10-28 and is not re-proposed here. Keeping a managed needs_review placeholder that contains no guidance only adds discovery noise and keeps waking this audit for review, so retire it. This is the only proposal: the other new lessons in the window, the tracker-based camera and face-width-matched zoom proven in the Political Lens 10 v2 approval and the Step7 V5 rebuild, are already recorded in MEMORY.md and the Mind Clash framework checklist and are exercised through the existing framework_clipper and local_ffmpeg_video skills, so a second simultaneous behavior change would not be attributable.'
+  review_after: 2026-10-29T00:45:45.829034+00:00
+  reviewed_at: 2026-10-15T00:45:45.829034+00:00
+  run_id: sirun_d7c79c545969407a814a6a71a537f6fc

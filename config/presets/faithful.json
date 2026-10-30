@@ -1,0 +1,1 @@
+{"schema_version":5,"name":"faithful","config":"config/political_lens.json","overrides":{"polish":{"tight_cut":{"enabled":false},"punch_in":{"enabled":false}},"craft":{"caption_mode":"gravitas","question_chip":{"enabled":false},"evidence_cards":{"enabled":false}},"semantic":{"receipts":{"enabled":false}}}}

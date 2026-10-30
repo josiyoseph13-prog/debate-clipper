@@ -1,0 +1,2 @@
+# Optional local face/mouth tracking. The model is hash-checked in registry.json.
+mediapipe==1.0.1

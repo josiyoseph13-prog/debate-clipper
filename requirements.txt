@@ -1,0 +1,20 @@
+streamlit>=1.36,<2
+streamlit-drawable-canvas>=0.9.3
+yt-dlp>=2025.1.15
+faster-whisper>=1.1.0
+opencv-contrib-python>=4.10,<5
+Pillow>=10,<13
+numpy>=1.26,<3
+fastapi>=0.115,<1
+uvicorn>=0.30,<1
+pytest>=8,<9
+typer>=0.15,<1
+keyring>=25,<26
+psutil>=6,<8
+httpx>=0.27,<1
+# Optional interop/semantic features. The core and render path do not import
+# these until the corresponding command is used.
+opentimelineio>=0.17,<1
+qrcode>=8,<9
+# Optional, hash-registered offline model adapters:
+# onnxruntime; tokenizers; sentencepiece; ctranslate2; sherpa-onnx; mediapipe

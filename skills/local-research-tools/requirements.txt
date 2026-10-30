@@ -1,0 +1,12 @@
+# research-tools runtime dependencies (all verified 2026-10-11)
+httpx==0.28.1
+beautifulsoup4==4.15.0
+trafilatura==2.3.1
+readability-lxml==0.9
+Scrapy==2.19.0
+feedparser==6.0.14
+tldextract==5.4.0
+youtube-transcript-api==1.2.4
+# tests only:
+pytest==9.1.1
+# external tool (separate venv): yt-dlp in ~/workspace/tools/media-venv

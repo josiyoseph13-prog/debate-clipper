@@ -1,0 +1,5 @@
+{
+  "schema_version": 5,
+  "config": "config/political_lens.json",
+  "overrides": {"asr": {"model": "whisper_base", "cpu_threads": 4}}
+}

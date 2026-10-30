@@ -1,0 +1,24 @@
+{
+  "schema_version": 5,
+  "status": "calibrated",
+  "backend": "libass-lossless",
+  "cache_key": "db2fc5adb29dd14c475d0a9aa1f174e192ba733aefaa66cfff48a13a3190048e",
+  "font": "D:\\charlie youtube long videos\\clipping automation\\debate_clipper\\assets\\fonts\\Montserrat-ExtraBold.ttf",
+  "font_sha256": "d3ac6a843d3ba6d5cafd44cf39e437055c8aed7e261010f595f57d3c7b3e2c1b",
+  "font_size": 94.902,
+  "scale_x": 88.18,
+  "dy": 2.0,
+  "measurement": {
+    "width": 171,
+    "cap_height": 43,
+    "center_x": 541.0,
+    "center_y": 608.0
+  },
+  "font_selection": [
+    "[Parsed_subtitles_0 @ 0000019da1313040] fontselect: (Montserrat ExtraBold, 700, 0) -> Montserrat-ExtraBold, 0, Montserrat-ExtraBold"
+  ],
+  "shaper": [
+    "[Parsed_subtitles_0 @ 0000019da331cb80] Shaper: FriBidi 1.0.16 (SIMPLE) HarfBuzz-ng 14.4.0 (COMPLEX)",
+    "[Parsed_subtitles_0 @ 0000019da1313040] Shaper: FriBidi 1.0.16 (SIMPLE) HarfBuzz-ng 14.4.0 (COMPLEX)"
+  ]
+}

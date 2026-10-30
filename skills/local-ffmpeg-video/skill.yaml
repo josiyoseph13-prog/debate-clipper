@@ -1,0 +1,29 @@
+name: local_ffmpeg_video
+title: Local ffmpeg video
+description: FFmpeg and ffprobe work in Pax's own environment, verifying media files and Debate Clipper speaker framing over many moments, probing streams, measuring loudness and silence, extracting frame montages for visual inspection, trimming and converting clips, and independently checking videos produced by other tools. Use whenever a task involves a video or audio file, a render or export that needs verification, speaker framing in a clip, or media conversion.
+category: Media
+include_in_prompt: true
+availability:
+  confidential_vm: true
+  needs_speech: false
+skill_improvement:
+  managed: true
+  needs_review: false
+  status: active
+  evidence_handles:
+  - d49164c5
+  - fc3b9ef7
+  - 2c166fb5
+  - dc95e4eb
+  - ec1c759f
+  - be9ec538
+  - assistant-msg-f3139adf
+  - 254d68cc
+  measurement:
+    proxy_metric_id: objective_success_rate
+    success_criterion: Over at least 3 verified clips in the window, no verification pass rests on a downsized contact sheet alone, every wide shot is seam checked at full size, every shot aspect is checked against its source within 2 percent, and the user reports no visual defect in a clip already claimed verified.
+    window_days: 14
+  rationale: 'Clip 29 evidence shows the gap precisely: the assistant judged joins on a small tiny frame sheet and at full size the seam line was plain (fc3b9ef7), a Kirk listening single around 7.6 seconds was stretched sideways and later measured 71 to 78 percent too wide (2c166fb5), and a posted clip showed a split and other side view (dc95e4eb). The existing local_ffmpeg_video rule required many moments and edge checks but never required full size inspection or a measured aspect comparison against the source, so a downsized sheet could still pass. The repair passed at 0 percent shape error with no line at full size (ec1c759f) and the user approved it (be9ec538), proving the full size gates are the discriminating check. Local computer vision duplicated this verification work with a weaker start, middle and end protocol plus detector stack facts, so its detector facts are carried into this merged skill and it retires in the same batch, reducing the active learned count from 13. Other learned skills were reviewed and kept distinct: the design cluster covers different outputs, research and reel catalog cover different inputs, and no other skill covers full size clip verification.'
+  review_after: 2026-11-12T01:02:17.480468+00:00
+  reviewed_at: 2026-10-29T01:02:17.480468+00:00
+  run_id: sirun_4e5c23e845424703b50597ca098f58c6

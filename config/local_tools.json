@@ -1,0 +1,8 @@
+{
+    "windows":  {
+                    "ffmpeg":  "D:\\charlie youtube long videos\\clipping automation\\debate_clipper\\work\\native_windows\\tools\\ffmpeg-9.0.2-essentials_build\\bin\\ffmpeg.exe",
+                    "ffprobe":  "D:\\charlie youtube long videos\\clipping automation\\debate_clipper\\work\\native_windows\\tools\\ffmpeg-9.0.2-essentials_build\\bin\\ffprobe.exe",
+                    "python":  "D:\\charlie youtube long videos\\clipping automation\\debate_clipper\\work\\native_windows\\venv\\Scripts\\python.exe",
+                    "asd_python":  "D:\\charlie youtube long videos\\clipping automation\\debate_clipper\\work\\asd_windows\\venv\\Scripts\\python.exe"
+                }
+}

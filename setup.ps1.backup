@@ -1,0 +1,26 @@
+$ErrorActionPreference = 'Stop'
+Set-Location $PSScriptRoot
+
+Write-Host '=== Debate Clipper setup ===' -ForegroundColor Cyan
+if (-not (Get-Command python -ErrorAction SilentlyContinue)) {
+  throw 'Python was not found. Install Python 3.11 or 3.12 from python.org, enable "Add Python to PATH", then run setup.ps1 again.'
+}
+python --version
+
+if (-not (Get-Command ffmpeg -ErrorAction SilentlyContinue)) {
+  if (Get-Command winget -ErrorAction SilentlyContinue) {
+    Write-Host 'FFmpeg not found. Attempting installation with winget...' -ForegroundColor Yellow
+    winget install --id Gyan.FFmpeg.Shared -e --accept-source-agreements --accept-package-agreements
+  } else {
+    Write-Warning 'FFmpeg is not installed and winget is unavailable. Install FFmpeg and add it to PATH, then rerun setup.ps1.'
+  }
+}
+
+if (-not (Test-Path '.venv\Scripts\python.exe')) {
+  python -m venv .venv
+}
+& '.venv\Scripts\python.exe' -m pip install --upgrade pip setuptools wheel
+& '.venv\Scripts\python.exe' -m pip install -r requirements.txt
+
+Write-Host ''
+Write-Host 'Setup completed. Run .\run.ps1 next.' -ForegroundColor Green

@@ -1,0 +1,13 @@
+# Shared dc core + Review Studio, tested with Python 3.14 in this environment.
+# ASR/ML/legacy Streamlit remain optional: requirements.txt.
+fastapi==0.142.2
+httpx==0.28.1
+numpy==2.5.3
+opencv-python-headless==5.0.0.93
+Pillow==12.3.0
+pytest==8.4.2
+psutil==7.2.2
+uvicorn==0.54.0
+keyring==25.7.0
+qrcode==8.2
+yt-dlp==2026.8.19

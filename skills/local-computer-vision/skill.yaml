@@ -1,0 +1,26 @@
+name: local_computer_vision
+title: Local computer vision
+description: Computer-vision verification for Debate Clipper from Pax's side, checking face detection, layout classification, and framing-quality claims made by the builder or the app, using frame extraction and direct visual inspection, plus the project's own vision stack on jo's PC when measurement is needed. Use whenever a Debate Clipper task involves faces, framing quality, dc/vision.py, or claims about what is in a frame.
+include_in_prompt: true
+availability:
+  confidential_vm: true
+  needs_speech: false
+skill_improvement:
+  managed: true
+  needs_review: false
+  status: retired
+  evidence_handles:
+  - d49164c5
+  - fc3b9ef7
+  - 2c166fb5
+  - dc95e4eb
+  - ec1c759f
+  - be9ec538
+  measurement:
+    proxy_metric_id: objective_success_rate
+    success_criterion: Over at least 3 verified clips in the window, no verification pass rests on a downsized contact sheet alone, every wide shot is seam checked at full size, every shot aspect is checked against its source within 2 percent, and the user reports no visual defect in a clip already claimed verified.
+    window_days: 14
+  rationale: Retirement half of the same consolidation as the merged local_ffmpeg_video proposal. Local computer vision overlapped that skill on the same Debate Clipper framing verification work with a weaker start, middle and end protocol, while its distinct detector stack facts (no local OpenCV or MediaPipe, Haar labels as heuristics at 320 pixels wide, MediaPipe as measurement engine, read only PC re-runs for disputed claims) are carried into the merged skill in this batch, so retiring it loses no method and removes duplicate discovery.
+  review_after: 2026-11-12T01:02:17.480468+00:00
+  reviewed_at: 2026-10-29T01:02:17.480468+00:00
+  run_id: sirun_4e5c23e845424703b50597ca098f58c6

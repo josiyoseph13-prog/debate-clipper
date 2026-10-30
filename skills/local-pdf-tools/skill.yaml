@@ -1,0 +1,10 @@
+name: local_pdf_tools
+title: Local pdf tools
+description: Work with PDF files locally — inspect (pages, metadata, sizes, encryption status), extract text and tables page-by-page, merge, split, rotate, reorder and extract pages, create new PDFs from a JSON spec or text file, stamp/watermark pages, list and fill form fields, and encrypt or decrypt copies. Use whenever a task involves examining, extracting from, restructuring, creating, stamping, form-filling, or password-protecting a PDF. All processing is local and offline; input PDFs are never modified. (No OCR.)
+include_in_prompt: true
+availability:
+  confidential_vm: true
+  needs_speech: false
+skill_improvement:
+  managed: true
+  needs_review: true

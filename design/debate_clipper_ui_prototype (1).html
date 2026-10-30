@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Debate Clipper – design prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f8fa;--card:#fff;--ink:#14213d;--mute:#5d6678;--line:#e3e6ec;--accent:#3d5afe;--accent-ink:#fff;--good:#14804a;--goodbg:#e4f5ea;--warn:#a8590a;--warnbg:#fdf0dd;--bad:#b3261e;--shade:#eef0f5;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10141f;--card:#182030;--ink:#eef1f8;--mute:#9aa4ba;--line:#2a3550;--accent:#7b8dff;--accent-ink:#0d1226;--good:#6fd9a0;--goodbg:#173a2a;--warn:#f0b36a;--warnbg:#3a2a12;--bad:#ff8a80;--shade:#1f2940}}
+:root[data-theme="dark"]{--bg:#10141f;--card:#182030;--ink:#eef1f8;--mute:#9aa4ba;--line:#2a3550;--accent:#7b8dff;--accent-ink:#0d1226;--good:#6fd9a0;--goodbg:#173a2a;--warn:#f0b36a;--warnbg:#3a2a12;--bad:#ff8a80;--shade:#1f2940}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 Figtree,system-ui,-apple-system,"Segoe UI",sans-serif}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+header{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;border-bottom:1px solid var(--line);background:var(--card)}
+.brand{font-weight:700;font-size:20px}
+.hbtn{border:1px solid var(--line);background:none;border-radius:10px;padding:8px 14px;font-size:15px}
+.steps{display:flex;gap:8px;max-width:760px;margin:26px auto 6px;padding:0 20px}
+.steps div{flex:1;font-size:15px;color:var(--mute);border-top:4px solid var(--line);padding-top:8px}
+.steps div.on{color:var(--ink);font-weight:600;border-color:var(--accent)}
+.steps div.done{border-color:var(--good);color:var(--good)}
+.next{max-width:760px;margin:0 auto 18px;padding:0 20px;color:var(--mute)}
+main{max-width:1100px;margin:0 auto;padding:0 20px 60px}
+.screen{display:none}.screen.on{display:block}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px}
+.narrow{max-width:760px;margin:0 auto}
+h1{font-size:30px;line-height:1.2;margin:0 0 8px}
+p.sub{color:var(--mute);margin:0 0 22px}
+.drop{border:2px dashed var(--line);border-radius:14px;padding:26px;background:var(--shade)}
+.drop input{width:100%;font:inherit;font-size:18px;padding:16px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.drop small{display:block;margin-top:10px;color:var(--mute)}
+.big{background:var(--accent);color:var(--accent-ink);border:0;border-radius:14px;padding:18px 34px;font-size:20px;font-weight:700;margin-top:22px}
+.big:hover{filter:brightness(1.08)}
+.big:disabled{opacity:.5;cursor:default}
+.link{background:none;border:0;color:var(--accent);font-weight:600;padding:8px 0;margin-top:14px;display:block}
+.more{display:none;margin-top:8px;padding:16px;border-radius:12px;background:var(--shade)}
+.more.on{display:block}
+.more label{display:block;font-size:15px;margin-bottom:4px;color:var(--mute)}
+select{font:inherit;padding:10px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);margin-bottom:12px;width:100%;max-width:340px}
+.bar{height:22px;border-radius:11px;background:var(--shade);overflow:hidden;margin:20px 0 10px}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .25s}
+.pct{font-size:44px;font-weight:700}
+.review{display:grid;grid-template-columns:270px minmax(0,1fr) 250px;gap:20px;align-items:start}
+@media(max-width:900px){.review{grid-template-columns:1fr}}
+.list{display:flex;flex-direction:column;gap:10px}
+.row{display:flex;gap:12px;align-items:center;text-align:left;background:var(--card);border:2px solid var(--line);border-radius:14px;padding:10px;width:100%}
+.row.sel{border-color:var(--accent)}
+.thumb{width:44px;height:64px;border-radius:8px;background:linear-gradient(160deg,#5b6b8f,#232c44);flex:none}
+.row b{display:block;font-size:16px;line-height:1.3}
+.row span{font-size:14px;color:var(--mute)}
+.tag{display:inline-block;font-size:13px;font-weight:600;border-radius:20px;padding:1px 10px;margin-left:6px}
+.t-great{background:var(--goodbg);color:var(--good)}.t-good{background:var(--shade);color:var(--accent)}.t-ok{background:var(--warnbg);color:var(--warn)}
+.stage{display:flex;flex-direction:column;align-items:center;gap:12px}
+.phone{position:relative;width:min(100%,270px);aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:#0b0f1a;color:#fff;display:flex;flex-direction:column}
+.ph-head{padding:10px 12px;font-size:12px;font-weight:600;background:#0b0f1a;text-align:center}
+.ph-vid{flex:1;background:linear-gradient(180deg,#46557a,#1c2338);position:relative;overflow:hidden;transition:all .3s}
+.person{position:absolute;bottom:0;left:50%;width:46%;height:70%;transform:translateX(-50%);border-radius:50% 50% 0 0/38% 38% 0 0;background:#2b3552;transition:all .3s}
+.person:before{content:"";position:absolute;top:-22%;left:25%;width:50%;aspect-ratio:1;border-radius:50%;background:#c9a58a}
+.p2{display:none}
+.two .person{width:40%;left:26%}.two .p2{display:block;left:74%}
+.cap{position:absolute;left:0;right:0;bottom:12%;text-align:center;font-weight:800;font-size:20px;letter-spacing:.5px;-webkit-text-stroke:3px #000;paint-order:stroke fill;text-shadow:0 2px 0 #000}
+.cap em{font-style:normal;color:#5dff6a}
+.play{width:100%;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:12px;font-weight:600}
+.side{display:flex;flex-direction:column;gap:10px}
+.act{border:2px solid var(--line);background:var(--card);border-radius:14px;padding:16px;font-size:18px;font-weight:700;text-align:left}
+.act.ok{background:var(--good);border-color:var(--good);color:#fff}
+.act.on{outline:3px solid var(--good)}
+.act.exp{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.badge{font-size:14px;color:var(--mute)}
+.edit{display:none;margin-top:6px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.edit.on{display:block}
+.tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.tabs button{border:1px solid var(--line);background:none;border-radius:20px;padding:6px 14px;font-size:15px}
+.tabs button.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.opt{margin-bottom:14px}
+.opt b{display:block;font-size:16px}
+.opt small{display:block;color:var(--mute);font-size:14px;margin-bottom:6px}
+.choices{display:flex;gap:8px;flex-wrap:wrap}
+.choices button{border:2px solid var(--line);background:none;border-radius:10px;padding:8px 12px;font-size:15px}
+.choices button.on{border-color:var(--accent);background:var(--shade);font-weight:600}
+.tab{display:none}.tab.on{display:block}
+.ready{background:var(--goodbg);color:var(--good);border-radius:14px;padding:20px;font-size:24px;font-weight:700;margin-bottom:16px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btns button{border:2px solid var(--line);background:var(--card);border-radius:14px;padding:16px 24px;font-size:18px;font-weight:600}
+.file{margin:14px 0;padding:12px 14px;background:var(--shade);border-radius:10px;font-size:15px;word-break:break-all}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:12px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:9}
+.toast.on{opacity:1}
+.hint{display:flex;gap:12px;justify-content:space-between;align-items:center;background:var(--warnbg);color:var(--warn);border-radius:12px;padding:10px 14px;margin-bottom:16px;font-size:15px}
+.hint button{background:none;border:0;font-weight:700;color:inherit}
+.proto{text-align:center;color:var(--mute);font-size:13px;padding:0 0 24px}
+.lay{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.lay button{border:2px solid var(--line);background:var(--card);border-radius:14px;padding:10px;text-align:center;font-size:15px;font-weight:600}
+.lay button small{display:block;font-weight:400;color:var(--mute);font-size:13px}
+.lay button.on{border-color:var(--accent);background:var(--shade)}
+.m{display:block;width:34px;height:60px;margin:0 auto 6px;border-radius:5px;background:#2b3552;position:relative;overflow:hidden}
+.m:before,.m:after{content:"";position:absolute;background:#8fa0c8}
+.m1:before{left:11px;top:14px;width:12px;height:12px;border-radius:50%}.m1:after{left:7px;top:28px;width:20px;height:32px;border-radius:10px 10px 0 0}
+.m2:before{left:0;top:0;width:100%;height:100%;background:linear-gradient(90deg,#8fa0c8 25%,#2b3552 50%,#e0883a 75%)}.m2:after{display:none}
+.m3:before{left:0;top:0;width:100%;height:28px;background:#8fa0c8}.m3:after{left:0;bottom:0;width:100%;height:28px;background:#e0883a}
+.m4:before{left:0;top:0;width:100%;height:100%;background:linear-gradient(90deg,#8fa0c8 25%,#2b3552 50%,#e0883a 75%);opacity:.7}.m4:after{content:"↔";left:0;right:0;top:22px;text-align:center;color:#fff;background:none;font-size:18px}
+.duo{display:none;margin:14px 0;padding:14px;border-radius:12px;background:var(--shade)}
+.duo.on{display:block}
+.tl{display:flex;gap:3px;margin:8px 0}
+.tl button{flex:1;height:34px;border:0;border-radius:6px;padding:0}
+.tl button.sel{outline:3px solid var(--ink)}
+.tlk{display:flex;gap:14px;font-size:13px;color:var(--mute);margin-bottom:6px;flex-wrap:wrap}
+.tlk i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px}
+input[type=range]{width:min(100%,260px);vertical-align:middle}
+.blend{display:none;position:absolute;top:0;bottom:0;left:38%;width:24%;background:linear-gradient(90deg,transparent,rgba(70,85,122,.9),transparent);pointer-events:none}
+.two .blend,.duo-both .blend{display:block}
+.stack .person{width:34%;height:38%;left:50%;bottom:50%}.stack .p2{display:block;left:50%;bottom:0}
+.stack .ph-div{display:block}
+.ph-div{display:none;position:absolute;left:0;right:0;top:50%;height:2px;background:#fff6}
+.box{display:none;position:absolute;border:2px dashed #ffe14d;border-radius:6px;color:#ffe14d;font-size:11px;font-weight:700;padding:2px 4px;pointer-events:none}
+.showbox .box{display:block}
+.b1{left:30%;top:18%;width:40%;height:34%}.b2{display:none!important;left:62%;top:18%;width:34%;height:34%}
+.two .b1,.duo-both .b1{left:2%;width:40%}.two.showbox .b2,.duo-both.showbox .b2,.stack.showbox .b2{display:block!important}
+.stack .b1{left:30%;top:6%;width:40%;height:26%}.stack .b2{left:30%;top:56%;width:40%;height:26%}
+.swapped .p2{left:26%}.swapped .person:not(.p2){left:74%}
+
+:root{--accent2:#7a5cff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent2:#a58bff}}
+:root[data-theme="dark"]{--accent2:#a58bff}
+body{background:radial-gradient(900px 380px at 50% -120px,rgba(61,90,254,.13),transparent 70%),var(--bg)}
+header{box-shadow:0 8px 24px -18px rgba(20,33,61,.4);padding:14px 28px}
+.brand{display:flex;align-items:center;letter-spacing:-.01em}
+.brand:before{content:"";width:28px;height:28px;border-radius:9px;margin-right:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 6px 14px -6px var(--accent)}
+.hbtn{transition:background .15s,transform .15s}.hbtn:hover{background:var(--shade)}
+h1{font-size:34px;letter-spacing:-.02em}
+.steps{gap:10px;margin-top:28px}
+.steps div{display:flex;align-items:center;gap:10px;border:0;background:var(--card);border-radius:999px;padding:7px 16px 7px 7px;color:var(--mute);font-weight:600;font-size:15px;cursor:pointer;box-shadow:0 1px 2px rgba(20,33,61,.06),0 6px 16px -10px rgba(20,33,61,.25);transition:transform .15s}
+.steps div:hover{transform:translateY(-1px)}
+.steps b{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--shade);font-size:14px;flex:none}
+.steps div.on{color:var(--ink)}.steps div.on b{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--accent-ink)}
+.steps div.done{color:var(--good)}.steps div.done b{background:var(--good);color:#fff}
+@media(max-width:640px){.steps div:not(.on) span{display:none}.steps div{padding-right:7px;justify-content:center}.steps div.on{flex:3}}
+.next{font-size:16px}
+.panel{border:0;border-radius:24px;padding:38px;box-shadow:0 1px 2px rgba(20,33,61,.05),0 24px 48px -28px rgba(20,33,61,.35)}
+.drop{border-radius:18px;transition:border-color .15s,background .15s}.drop:focus-within,.drop:hover{border-color:var(--accent)}
+.big{background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 12px 24px -12px var(--accent);transition:transform .15s,box-shadow .15s}
+.big:hover{transform:translateY(-2px);filter:none;box-shadow:0 16px 28px -12px var(--accent)}.big:active{transform:none}
+.bar{height:16px;border-radius:8px}.bar i{background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:8px}
+.pct{font-size:56px;letter-spacing:-.03em}
+.row{border:0;border-radius:18px;padding:10px 12px;box-shadow:0 1px 2px rgba(20,33,61,.06),0 8px 18px -14px rgba(20,33,61,.35);transition:transform .15s,box-shadow .15s}
+.row:hover{transform:translateY(-1px)}
+.row.sel{box-shadow:0 0 0 3px var(--accent),0 12px 22px -14px var(--accent)}
+.thumb{width:46px;height:66px;border-radius:10px;background:linear-gradient(160deg,#6a7db0,#232c44);position:relative}
+.thumb:after{content:"▶";position:absolute;inset:0;display:grid;place-items:center;color:#fff9;font-size:14px}
+.phone{border-radius:30px;box-shadow:0 0 0 7px #0b0f1a,0 0 0 8px #3a4766,0 36px 54px -26px rgba(10,16,40,.7);margin:8px 0}
+.ph-head{padding:12px;background:linear-gradient(180deg,#0b0f1a,#121a2e);letter-spacing:.02em}
+.play{border:0;border-radius:14px;box-shadow:0 1px 2px rgba(20,33,61,.06),0 8px 18px -12px rgba(20,33,61,.4);transition:transform .15s}.play:hover{transform:translateY(-1px)}
+.badge{background:var(--shade);padding:4px 12px;border-radius:999px}
+.act{border:0;border-radius:16px;padding:17px 18px;box-shadow:0 1px 2px rgba(20,33,61,.06),0 8px 18px -12px rgba(20,33,61,.35);transition:transform .15s}
+.act:hover{transform:translateY(-1px)}
+.act.ok{background:linear-gradient(135deg,var(--good),#27a869)}
+.act.exp{background:linear-gradient(135deg,var(--accent),var(--accent2))}
+.edit{border:0;border-radius:24px;padding:24px;margin-top:20px;box-shadow:0 1px 2px rgba(20,33,61,.05),0 24px 48px -28px rgba(20,33,61,.35)}
+.tabs{display:inline-flex;background:var(--shade);padding:4px;border-radius:999px;gap:2px;margin-bottom:18px}
+.tabs button{border:0;border-radius:999px;padding:9px 20px;font-weight:600;transition:background .15s}
+.tabs button.on{background:var(--card);color:var(--ink);box-shadow:0 2px 8px -2px rgba(20,33,61,.3)}
+.choices button{border-radius:12px;transition:border-color .15s,transform .15s}.choices button:hover{border-color:var(--accent)}
+.lay button{border-radius:18px;padding:14px 10px;transition:border-color .15s,transform .15s}.lay button:hover{transform:translateY(-2px);border-color:var(--accent)}
+.m{width:38px;height:66px;border-radius:7px}
+.duo{border-radius:18px;padding:18px}
+.tl button{height:40px;border-radius:8px}
+.boxed{margin-top:10px;padding:14px;border-radius:14px;background:var(--shade)}
+.pad{display:flex;flex-wrap:wrap;gap:6px}
+.pad button{border:2px solid var(--line);background:var(--card);border-radius:10px;padding:8px 12px;font-size:15px;min-width:44px;font-weight:600}
+.pad button:hover{border-color:var(--accent)}
+.showbox .box{pointer-events:auto;cursor:move;touch-action:none;background:rgba(255,225,77,.12)}
+.box.sel{border-style:solid;background:rgba(255,225,77,.22)}
+.rz{position:absolute;right:-7px;bottom:-7px;width:16px;height:16px;border-radius:50%;background:#ffe14d;border:2px solid #0b0f1a;cursor:nwse-resize;display:none}
+.showbox .rz{display:block}
+.ready{display:flex;align-items:center;border-radius:18px;padding:22px}
+.ready:before{content:"✓";display:grid;place-items:center;flex:none;width:46px;height:46px;border-radius:50%;background:var(--good);color:#fff;margin-right:16px;font-size:24px;animation:pop .45s}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+.btns button{border:0;border-radius:16px;box-shadow:0 1px 2px rgba(20,33,61,.06),0 8px 18px -12px rgba(20,33,61,.4);transition:transform .15s}.btns button:hover{transform:translateY(-2px)}
+.file{border-radius:12px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.stage{position:sticky;top:12px}
+.review.editing{grid-template-columns:minmax(0,1fr) minmax(360px,470px)}
+.review.editing .colList,.review.editing .side{display:none}
+.review.editing .phone{width:min(100%,310px)}
+.review.editing .edit{margin:0;position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}
+.edhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.edhead b{font-size:20px}
+@media(max-width:900px){.review.editing{grid-template-columns:1fr}.review.editing .stage{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0}.review.editing .phone{width:auto;height:38vh}.review.editing .edit{position:static;max-height:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">Debate Clipper</div>
+  <div><button class="hbtn" onclick="showHelp()">Help</button> <button class="hbtn" onclick="go(4)">My exports</button></div>
+</header>
+
+<div class="steps" id="steps">
+  <div onclick="go(0)"><b>1</b><span>Add video</span></div><div onclick="start()"><b>2</b><span>Find clips</span></div><div onclick="go(2)"><b>3</b><span>Review</span></div><div onclick="go(3)"><b>4</b><span>Export</span></div>
+</div>
+<div class="next" id="next"></div>
+
+<main>
+<div id="hintbox"></div>
+
+<!-- Screen 1 -->
+<section class="screen" id="s1"><div class="panel narrow">
+  <h1>Add a debate video</h1>
+  <p class="sub">Paste a YouTube link or drop a video file. We will find the best moments for you.</p>
+  <div class="drop">
+    <input id="link" placeholder="Paste a YouTube link here" aria-label="YouTube link">
+    <small>Or drag a video file into this box.</small>
+  </div>
+  <button class="big" onclick="start()">Find clips</button>
+  <button class="link" onclick="tog('m1')">More options</button>
+  <div class="more" id="m1">
+    <label>Do you have the rights to this video?</label>
+    <select><option>I'm not sure (you can still make clips, but not auto-post)</option><option>Yes, it is mine</option><option>Yes, I have permission</option></select>
+    <label>How many clips should we find?</label>
+    <select><option>8 clips</option><option>5 clips</option><option>12 clips</option></select>
+  </div>
+</div></section>
+
+<!-- Screen 2 -->
+<section class="screen" id="s2"><div class="panel narrow">
+  <h1 id="ptitle">Finding clips</h1>
+  <p class="sub" id="pmsg">Getting started…</p>
+  <div class="pct"><span id="pnum">0</span>%</div>
+  <div class="bar"><i id="pbar"></i></div>
+  <button class="hbtn" onclick="cancel()">Cancel</button>
+</div></section>
+
+<!-- Screen 3 -->
+<section class="screen" id="s3">
+  <div class="review" id="rev">
+    <div class="colList">
+      <h1 style="font-size:22px">8 clips found</h1>
+      <div class="list" id="list"></div>
+    </div>
+    <div class="stage">
+      <div class="phone" id="phone">
+        <div class="ph-head">Debate Clipper</div>
+        <div class="ph-vid" id="pvid"><div class="person"></div><div class="person p2"></div><div class="blend"></div><div class="ph-div"></div><div class="box b1">Person A<span class="rz"></span></div><div class="box b2">Person B<span class="rz"></span></div><div class="cap" id="cap">YOU SAID <em>THAT</em> WRONG</div></div>
+      </div>
+      <button class="play" id="playbtn" onclick="playToggle()">▶ Play</button>
+      <div class="badge" id="fbadge">Framing: Auto</div>
+    </div>
+    <div class="side">
+      <button class="act ok" id="bApprove" onclick="approve()">Approve</button>
+      <button class="act" onclick="reject()">Reject</button>
+      <button class="act" onclick="editTog()">Edit</button>
+      <button class="act exp" onclick="exportClip()">Export</button>
+      <button class="link" onclick="toast('Clear, simple reasons would show here')">Why this rating?</button>
+    </div>
+  <div class="edit" id="edit">
+    <div class="edhead"><b>Editing this clip</b><button class="big" style="margin:0;padding:10px 20px;font-size:16px" onclick="editTog()">Done</button></div>
+    <div class="tabs" id="tabs">
+      <button class="on" onclick="tab(0)">Framing</button><button onclick="tab(1)">Captions</button><button onclick="tab(2)">Speaker Frame</button>
+    </div>
+    <div class="tab on">
+      <div class="opt"><b>Who is on screen?</b><small>Auto picks the person talking. Change it if it picks wrong.</small>
+        <div class="choices" data-set="layout"><button class="on" onclick="pick(this,'one')">Auto</button><button onclick="pick(this,'one')">Just one person</button></div></div>
+      <div class="opt"><b>How close to the face?</b><small>Closer looks stronger. Farther shows more of the room.</small>
+        <div class="choices"><button onclick="pick(this)">Farther</button><button class="on" onclick="pick(this)">Normal</button><button onclick="pick(this)">Closer</button></div></div>
+    </div>
+    <div class="tab">
+      <div class="opt"><b>Text size</b><small>Make the words bigger or smaller.</small>
+        <div class="choices"><button onclick="capSize(-2,this)">Smaller</button><button class="on" onclick="capSize(0,this)">Normal</button><button onclick="capSize(3,this)">Bigger</button></div></div>
+      <div class="opt"><b>Highlight color</b><small>The color of the word being spoken.</small>
+        <div class="choices"><button class="on" onclick="hl('#5dff6a',this)">Green</button><button onclick="hl('#ffe14d',this)">Yellow</button><button onclick="hl('#ff6a6a',this)">Red</button></div></div>
+    </div>
+    <div class="tab">
+      <div class="opt"><b>Step 1 · Pick how it should look</b><small>Choose what the video shows when two people are in the clip.</small>
+        <div class="lay" id="lay">
+          <button class="on" onclick="setLay('one',this)"><i class="m m1"></i>One person<small>Only the speaker</small></button>
+          <button onclick="setLay('two',this)"><i class="m m2"></i>Both, blended<small>Side by side, soft join</small></button>
+          <button onclick="setLay('stack',this)"><i class="m m3"></i>Both, stacked<small>One above the other</small></button>
+          <button onclick="setLay('duo',this)"><i class="m m4"></i>Duo style<small>Switches by itself</small></button>
+        </div></div>
+      <div class="opt"><b>Step 2 · Check the boxes</b><small>A box is the frame around one person. If a box is on the wrong person, press Swap.</small>
+        <div class="choices"><button id="bxbtn" onclick="toggleBoxes()">Show boxes on the video</button><button onclick="swapSides()">Swap people</button></div>
+        <div class="boxed">
+          <small>Edit a box: drag it on the video, drag its corner to resize, or use the buttons.</small>
+          <div class="choices" style="margin:8px 0"><button class="on" id="wA" onclick="selBox('A')">Person A's box</button><button id="wB" onclick="selBox('B')">Person B's box</button></div>
+          <div class="pad"><button onclick="nudge(-3,0,0)" aria-label="Move left">◀</button><button onclick="nudge(0,-3,0)" aria-label="Move up">▲</button><button onclick="nudge(0,3,0)" aria-label="Move down">▼</button><button onclick="nudge(3,0,0)" aria-label="Move right">▶</button><button onclick="nudge(0,0,-4)">Smaller</button><button onclick="nudge(0,0,4)">Bigger</button><button onclick="resetBoxes();toast('Boxes reset')">Reset boxes</button></div>
+        </div></div>
+      <div id="duo" class="duo">
+        <div class="opt"><b>Duo style settings</b><small>Duo style shows both people, then jumps to one person when something big is said. It follows the style of your reference videos.</small></div>
+        <div class="opt"><b>When does it jump to one person?</b><small>It jumps after one person has talked for this long.</small>
+          <input type="range" min="2" max="10" value="5" id="sl1" oninput="duoSet()"> <span id="sl1v">5 seconds</span></div>
+        <div class="opt"><b>Shortest time on one shot</b><small>Stops the video from flickering back and forth.</small>
+          <input type="range" min="1" max="4" step="0.5" value="1.5" id="sl2" oninput="duoSet()"> <span id="sl2v">1.5 seconds</span></div>
+        <div class="opt"><b>Go full screen on one person, in the middle</b><small>Move the slider to the moment you want. Choose who, and for how long.</small>
+          <input type="range" min="0" max="27" value="8" id="sl3" oninput="moment()"> <span id="sl3v">0:08</span>
+          <div class="choices" style="margin:8px 0"><select id="dur" style="width:auto;margin:0"><option value="2">for 2 seconds</option><option value="4" selected>for 4 seconds</option><option value="8">for 8 seconds</option><option value="99">until the end</option></select></div>
+          <div class="choices"><button onclick="applyFull('A')">Full screen: Person A</button><button onclick="applyFull('B')">Full screen: Person B</button><button onclick="applyFull('both')">Back to both</button></div></div>
+        <div class="opt"><b>Your clip, second by second</b><small>Click a block to see it above. Click again to change it: Both, Person A, Person B.</small>
+          <div class="tl" id="tl"></div>
+          <div class="tlk"><span><i style="background:#7b8dff"></i>Both</span><span><i style="background:#2fb36b"></i>Person A</span><span><i style="background:#e0883a"></i>Person B</span></div>
+          <small>This is a guess from the audio. Check it by eye.</small></div>
+      </div>
+      <div class="opt"><b>Step 3 · Preview and save</b><small>Look at the picture above. Happy? Save it.</small>
+        <div class="choices"><button class="big" style="margin:0;padding:12px 24px;font-size:17px" onclick="saveSF()">Save</button><button onclick="resetAuto()">Back to Auto</button></div></div>
+      <button class="link" onclick="tog('adv')">Advanced</button>
+      <div class="more" id="adv">
+        <div class="opt"><b>How soft is the join between the two people?</b><small>Softer hides the line. Sharper shows more of each person.</small>
+          <div class="choices"><button onclick="pick(this)">Softer</button><button class="on" onclick="pick(this)">Normal</button><button onclick="pick(this)">Sharper</button></div></div>
+        <div class="opt"><b>Direction</b><small>Side by side or one above the other.</small>
+          <div class="choices"><button class="on" onclick="pick(this)">Side by side</button><button onclick="pick(this)">Top and bottom</button></div></div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- Screen 4 -->
+<section class="screen" id="s4"><div class="panel narrow">
+  <div class="ready">Your clip is ready</div>
+  <div class="file" id="fname">2026-10-07_debate-clipper_clip-01_make-fun-of-a-white-person.mp4</div>
+  <div class="btns">
+    <button onclick="toast('Playing your clip')">▶ Play</button>
+    <button onclick="toast('Opening the folder')">Open folder</button>
+    <button onclick="toast('File path copied')">Copy file path</button>
+  </div>
+  <button class="link" onclick="go(2)">Back to my clips</button>
+</div></section>
+
+<!-- Screen 5 -->
+<section class="screen" id="s5"><div class="panel narrow">
+  <h1>My exports</h1>
+  <p class="sub">Everything you have made, newest first.</p>
+  <div class="file">clip-01 · make fun of a white person · 28 sec</div>
+  <div class="file">clip-02 · Christian teaching on love · 28 sec</div>
+  <button class="link" onclick="go(0)">Add another video</button>
+</div></section>
+</main>
+
+<div class="proto">Design prototype. Clips, ratings and progress are pretend data.</div>
+<div class="toast" id="toast"></div>
+
+<script>
+var clips=[
+ ["Make fun of a white person","Great","t-great","0:28"],
+ ["Christian teaching on love","Great","t-great","0:28"],
+ ["All that matters to God","Good","t-good","0:32"],
+ ["Who gets to define sin","Good","t-good","0:25"],
+ ["The audience pushes back","Okay","t-ok","0:30"]];
+var cur=0,screen=0,timer=null,playing=false,approved={},hinted={};
+var msgs=["Downloading video…","Listening to the debate…","Finding the best moments…","Checking each clip…"];
+var nextTxt=["Paste a link, then press Find clips.","Nothing to do. We are working on it.","Pick a clip, watch it, then press Approve.","Done. Your clip is saved."];
+function $(i){return document.getElementById(i)}
+function toast(t){var e=$("toast");e.textContent=t;e.classList.add("on");clearTimeout(e._t);e._t=setTimeout(function(){e.classList.remove("on")},2200)}
+function tog(i){$(i).classList.toggle("on")}
+function go(n){
+  screen=n;pausePlay();
+  for(var i=0;i<5;i++)$("s"+(i+1)).classList.toggle("on",i===n);
+  var st=Math.min(n,3);if(n===4)st=3;
+  var d=$("steps").children;
+  for(i=0;i<4;i++){d[i].className=i<st?"done":(i===st?"on":"")}
+  $("next").textContent="Step "+(st+1)+" of 4 · "+nextTxt[st];
+  var hints=["Tip: you do not need to change any options. Just paste a link.","","Tip: only one clip plays at a time. Approve the ones you like.","" ];
+  $("hintbox").innerHTML=(hints[st]&&!hinted[st])?'<div class="hint"><span>'+hints[st]+'</span><button onclick="hinted['+st+']=1;this.parentNode.remove()">Got it</button></div>':"";
+  if(n===2)renderList();
+  window.scrollTo(0,0)
+}
+function start(){
+  if(!$("link").value.trim()){$("link").value="https://youtu.be/example";}
+  go(1);var p=0;$("pnum").textContent=0;$("pbar").style.width="0";
+  clearInterval(timer);
+  timer=setInterval(function(){
+    p+=Math.random()*6+2;if(p>=100)p=100;
+    $("pnum").textContent=Math.round(p);$("pbar").style.width=p+"%";
+    $("pmsg").textContent=msgs[Math.min(3,Math.floor(p/25))]+" "+Math.round(p)+"%";
+    if(p>=100){clearInterval(timer);$("pmsg").textContent="Done. 8 clips found.";setTimeout(function(){go(2)},700)}
+  },200)
+}
+function cancel(){clearInterval(timer);go(0);toast("Cancelled")}
+function renderList(){
+  $("list").innerHTML=clips.map(function(c,i){
+    return '<button class="row'+(i===cur?' sel':'')+'" onclick="sel('+i+')"><div class="thumb"></div><div><b>'+c[0]+'</b><span>'+c[3]+'<span class="tag '+c[2]+'">'+c[1]+'</span>'+(approved[i]?' <span class="tag t-great">Approved</span>':'')+'</span></div></button>'
+  }).join("")
+}
+function sel(i){cur=i;pausePlay();renderList();$("cap").innerHTML="YOU SAID <em>THAT</em> WRONG";}
+function playToggle(){
+  playing=!playing;$("playbtn").textContent=playing?"❚❚ Pause":"▶ Play";
+  if(playing)toast("Other videos pause automatically")
+}
+function pausePlay(){playing=false;if($("playbtn"))$("playbtn").textContent="▶ Play"}
+function approve(){approved[cur]=true;renderList();toast("Approved: "+clips[cur][0])}
+function reject(){toast("Rejected. It will not be exported.")}
+function editTog(){var on=$("edit").classList.toggle("on");$("rev").classList.toggle("editing",on);window.scrollTo(0,0)}
+function tab(i){
+  var b=$("tabs").children,t=document.querySelectorAll("#edit .tab");
+  for(var k=0;k<b.length;k++){b[k].classList.toggle("on",k===i);t[k].classList.toggle("on",k===i)}
+}
+function pick(el,layout){
+  var g=el.parentNode.children;for(var k=0;k<g.length;k++)g[k].classList.remove("on");el.classList.add("on");
+  if(layout)$("pvid").classList.toggle("two",layout==="two")
+}
+function capSize(d,el){pick(el);$("cap").style.fontSize=(20+d)+"px"}
+function hl(c,el){pick(el);document.querySelector("#cap em").style.color=c}
+function exportClip(){
+  go(1);$("ptitle").textContent="Exporting your clip";var p=0;clearInterval(timer);
+  timer=setInterval(function(){
+    p+=Math.random()*9+3;if(p>=100)p=100;
+    $("pnum").textContent=Math.round(p);$("pbar").style.width=p+"%";
+    $("pmsg").textContent="Making the video… "+Math.round(p)+"%";
+    if(p>=100){clearInterval(timer);$("ptitle").textContent="Finding clips";
+      $("fname").textContent="2026-10-07_debate-clipper_clip-0"+(cur+1)+"_"+clips[cur][0].toLowerCase().replace(/ /g,"-")+".mp4";
+      setTimeout(function(){go(3)},500)}
+  },200)
+}
+function showHelp(){toast("Help: 1 paste a link. 2 wait. 3 approve clips you like. 4 export.")}
+var lay="one",tlst=[],tlsel=-1,boxes=false,swapped=false;
+var NEXT={both:"A",A:"B",B:"both"};
+function applyView(state){
+  var v=$("pvid");v.classList.remove("two","stack","duo-both");
+  if(lay==="two")v.classList.add("two");
+  else if(lay==="stack")v.classList.add("stack");
+  else if(lay==="duo"){ if(state==="both"||!state)v.classList.add("duo-both","two"); }
+  v.classList.toggle("showbox",boxes);v.classList.toggle("swapped",swapped);
+}
+function setLay(l,el){
+  resetBoxes();lay=l;var g=el.parentNode.children;for(var k=0;k<g.length;k++)g[k].classList.remove("on");el.classList.add("on");
+  $("duo").classList.toggle("on",l==="duo");
+  if(l==="duo"&&!tlst.length)duoSet();
+  applyView(l==="duo"?tlst[0]:null);
+  $("fbadge").textContent="Framing: "+(l==="one"?"Auto":"Speaker Frame (not saved yet)");
+}
+function toggleBoxes(){boxes=!boxes;$("bxbtn").textContent=boxes?"Hide boxes":"Show boxes on the video";applyView(lay==="duo"?tlst[Math.max(0,tlsel)]:null)}
+function swapSides(){resetBoxes();swapped=!swapped;applyView(lay==="duo"?tlst[Math.max(0,tlsel)]:null);toast("People swapped")}
+function duoSet(){
+  var a=+$("sl1").value,b=+$("sl2").value;
+  $("sl1v").textContent=a+" seconds";$("sl2v").textContent=b+" seconds";
+  tlst=[];for(var i=0;i<12;i++){tlst.push(i>=3&&i<3+Math.round(a/2)?"A":(i>=9&&i<9+Math.ceil(b)?"B":"both"))}
+  tlsel=-1;renderTL();
+}
+function renderTL(){
+  var col={both:"#7b8dff",A:"#2fb36b",B:"#e0883a"};
+  $("tl").innerHTML=tlst.map(function(t,i){return '<button class="'+(i===tlsel?"sel":"")+'" style="background:'+col[t]+'" title="'+t+'" onclick="tlClick('+i+')"></button>'}).join("");
+}
+function tlClick(i){
+  if(tlsel===i)tlst[i]=NEXT[tlst[i]];
+  tlsel=i;renderTL();showState(tlst[i]);
+}
+function showState(t){
+  var v=$("pvid");applyView(t);
+  if(t==="A"||t==="B"){v.classList.remove("two","duo-both","stack");toast("Showing "+(t==="A"?"Person A":"Person B")+" full screen")}
+}
+function saveSF(){toast("Saved. Framing: Speaker Frame (edited by you)");$("fbadge").textContent="Framing: Speaker Frame (edited by you)"}
+function resetAuto(){
+  resetBoxes();lay="one";boxes=false;swapped=false;applyView();$("duo").classList.remove("on");
+  var g=$("lay").children;for(var k=0;k<g.length;k++)g[k].classList.toggle("on",k===0);
+  $("fbadge").textContent="Framing: Auto";toast("Back to Auto")
+}
+function moment(){
+  var t=+$("sl3").value;$("sl3v").textContent="0:"+(t<10?"0":"")+t;
+  var i=Math.min(11,Math.floor(t/28*12));tlsel=i;renderTL();showState(tlst[i]);
+}
+function applyFull(who){
+  if(!tlst.length)duoSet();
+  var t=+$("sl3").value,i=Math.min(11,Math.floor(t/28*12)),d=+$("dur").value;
+  var n=d>=99?12:Math.max(1,Math.ceil(d/(28/12)));
+  for(var k=i;k<Math.min(12,i+n);k++)tlst[k]=who;
+  tlsel=i;renderTL();showState(tlst[i]);
+  toast(who==="both"?"Back to both people from 0:"+(t<10?"0":"")+t:"Full screen on Person "+who+" from 0:"+(t<10?"0":"")+t);
+}
+var selW="A",drag=null;
+function boxEl(w){return document.querySelector(".b"+(w==="A"?1:2))}
+function personEl(w){return w==="A"?document.querySelector("#pvid .person:not(.p2)"):document.querySelector("#pvid .p2")}
+function syncPerson(w){var b=boxEl(w),p=personEl(w),v=$("pvid").getBoundingClientRect(),r=b.getBoundingClientRect();
+  if(!r.width)return;p.style.left=((r.left+r.width/2-v.left)/v.width*100)+"%";p.style.width=Math.max(22,Math.min(70,r.width/v.width*100*.95))+"%"}
+function setBox(bx,l,t,w,h,v){
+  w=Math.max(14*v.width/100,Math.min(w,v.width));h=Math.max(12*v.height/100,Math.min(h,v.height));
+  l=Math.max(0,Math.min(l,v.width-w));t=Math.max(0,Math.min(t,v.height-h));
+  bx.style.left=(l/v.width*100)+"%";bx.style.top=(t/v.height*100)+"%";bx.style.width=(w/v.width*100)+"%";bx.style.height=(h/v.height*100)+"%"}
+function selBox(w){
+  selW=w;$("wA").classList.toggle("on",w==="A");$("wB").classList.toggle("on",w==="B");
+  boxEl("A").classList.toggle("sel",w==="A");boxEl("B").classList.toggle("sel",w==="B");
+  if(!boxes)toggleBoxes();
+  if(w==="B"&&lay==="one")toast("Person B's box shows when both people are on screen");
+}
+function nudge(dx,dy,dz){
+  if(!boxes)toggleBoxes();
+  var bx=boxEl(selW),v=$("pvid").getBoundingClientRect(),r=bx.getBoundingClientRect();
+  if(!r.width){toast("Pick a layout with both people first");return}
+  var k=v.width/100;
+  setBox(bx,r.left-v.left+dx*k-dz*k/2,r.top-v.top+dy*v.height/100-dz*k/2,r.width+dz*k,r.height+dz*k*v.height/v.width,v);syncPerson(selW)}
+function resetBoxes(){["A","B"].forEach(function(w){var b=boxEl(w);b.style.cssText="";var p=personEl(w);p.style.left="";p.style.width=""})}
+document.addEventListener("pointerdown",function(e){
+  var bx=e.target.closest&&e.target.closest(".box");if(!bx||!$("pvid").classList.contains("showbox"))return;
+  e.preventDefault();var w=bx.classList.contains("b1")?"A":"B";selBox(w);
+  var v=$("pvid").getBoundingClientRect(),r=bx.getBoundingClientRect();
+  drag={w:w,bx:bx,rz:!!e.target.closest(".rz"),sx:e.clientX,sy:e.clientY,l:r.left-v.left,t:r.top-v.top,bw:r.width,bh:r.height,v:v}});
+window.addEventListener("pointermove",function(e){
+  if(!drag)return;var dx=e.clientX-drag.sx,dy=e.clientY-drag.sy,d=drag;
+  if(d.rz)setBox(d.bx,d.l,d.t,d.bw+dx,d.bh+dy,d.v);else setBox(d.bx,d.l+dx,d.t+dy,d.bw,d.bh,d.v);syncPerson(d.w)});
+window.addEventListener("pointerup",function(){drag=null});
+go(0);
+</script>
+</body>
+</html>

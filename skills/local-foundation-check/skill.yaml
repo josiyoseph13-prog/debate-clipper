@@ -1,0 +1,10 @@
+name: local_foundation_check
+title: Local foundation check
+description: Validate Pax's capability registry (~/workspace/registry), regenerate its INDEX from record frontmatter, and run the one-command foundation check (registry validity + installed tool versions + read-only connector statuses). Use when asked to check Pax's capabilities, audit the registry, verify tool status, or after any registry edit.
+include_in_prompt: true
+availability:
+  confidential_vm: true
+  needs_speech: false
+skill_improvement:
+  managed: true
+  needs_review: true
