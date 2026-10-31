@@ -101,6 +101,14 @@ gate: the picture must FILL the frame (speaker framing). Blurred bands
 above/below a wide strip of video mean the framing was never measured —
 that is a FAIL, not a style. Fix the vision setup (step 2) and render
 again; never accept a blur-filled export.
+Honest limit, measured on the fixed pack: with the vision stack installed
+the framing IS measured and the speaking shots fill the frame — but a
+moment whose source is genuinely wide (a stage or crowd shot, or a
+two-shot with no single trackable speaker) can still come out as a smaller
+picture inside blur, and the render report flags it (framing needs
+review). Per the house rules that export is not deliverable either: in the
+supervised build, cover or re-cut those moments — a filled duo crop, a
+reaction shot, or a different moment — and render again.
 
 Only after both tests pass do you build the owner's ONE test clip under the
 full rules in FRIEND_CLIPPER_RULES.md, with the separate checker, for the

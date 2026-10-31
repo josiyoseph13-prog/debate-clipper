@@ -54,6 +54,16 @@ brands — do not post with them. Build yours from the starter (point 3).
    A Windows PC with the environment in INSTALL_AND_SETUP.md, enough disk for
    source videos, and your own Muse signed in as you.
 
+8. **The supervised loop itself.**
+   The one-click render is a starting point, not the finished quality. On a
+   real debate it fills the frame for speaking shots, but genuinely wide
+   moments (stage, crowd, untrackable two-shots) can still come out small
+   inside blur — the render report flags them, and the house rules fail
+   them. Finished clips come from the loop in SUPERVISION_LOOP.md: a
+   builder working to the rules, an independent checker with a written
+   report, and the owner's eye last. That loop — not any single render —
+   is what produces clips at the original level.
+
 ## What will NOT be shared, ever
 
 Passwords, sign-in words, cookies, API keys, or access to the original
