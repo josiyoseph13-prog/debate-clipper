@@ -7,6 +7,9 @@ first real clip.
 
 ## A. Debate Clipper project
 
+For the plain step-by-step walkthrough, follow
+`HOW_TO_SET_UP_THE_PROJECT.md`. This section is the reference behind it.
+
 You receive the project code separately (see WHAT_YOU_STILL_NEED.md). Once you
 have it:
 

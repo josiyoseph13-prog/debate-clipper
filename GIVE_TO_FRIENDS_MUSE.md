@@ -10,8 +10,11 @@ the same system for YOUR owner — his accounts, his logos, his pages.
 1. `FRIEND_CLIPPER_RULES.md` — the house clipping rules. These are binding.
    They took months of trial, error, and owner corrections to learn. Do not
    improve them, soften them, or replace them with your own style.
-2. `INSTALL_AND_SETUP.md` — how to set up the Debate Clipper project and your
-   own tools, with the proof tests you must pass before building anything.
+2. `HOW_TO_SET_UP_THE_PROJECT.md` — the plain step-by-step for setting up
+   the Debate Clipper project itself, from nothing to a working system.
+   Follow it in order. `INSTALL_AND_SETUP.md` is the reference behind it:
+   environment facts, honest limits, and the proof tests you must pass
+   before building anything.
 3. `WHAT_YOU_STILL_NEED.md` — the honest list of things that are NOT in this
    pack (project code, accounts, cookies, logos) and where each one comes from.
 4. `WORD_TIMINGS.md` — how the caption word timings are made (from the audio,

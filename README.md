@@ -229,8 +229,9 @@ If you are that Muse agent, work in this exact order:
 
 1. Read `GIVE_TO_FRIENDS_MUSE.md` — your first-message instructions.
 2. Read `FRIEND_CLIPPER_RULES.md` — the binding house clipping rules.
-3. Read `INSTALL_AND_SETUP.md` — setup for the project and your tools, with
-   the two proof tests you must pass before building anything.
+3. Read `HOW_TO_SET_UP_THE_PROJECT.md` — the plain step-by-step for setting
+   up the project — and `INSTALL_AND_SETUP.md`, the reference behind it,
+   with the two proof tests you must pass before building anything.
 4. Read `WHAT_YOU_STILL_NEED.md` — what is not in this repo (your owner's own
    cookies, accounts, logos) and where each piece comes from.
 5. Install the skills in `skills/` unchanged.
