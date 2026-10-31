@@ -68,7 +68,10 @@ accounts, logos, names, and handles wherever a brand is mentioned.
   visible line — including during speaker changes and zooms, because the move
   crosses the seam. In duo shots BOTH faces must be fully visible; the seam
   sits in the gap between the speakers and never crosses a face. If the source
-  leaves no clean gap, use honest single shots instead.
+  leaves no clean gap, use honest single shots instead. A blended two-shot is
+  honest ONLY when the source truly films both people at the same moment (one
+  stage shot, or split feeds of the same moment). Never fake a two-shot by
+  blending two separate solo shots together.
 - NO cropped faces at normal moments: the whole head plus shoulders fits, with
   air around the face. A face never touches the frame edges at base framing.
 - Zoom is a punch for big lines only: punch in on the big line, then come back
