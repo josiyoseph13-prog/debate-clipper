@@ -20,6 +20,11 @@ it. Each one comes from the owner or from a separate step.
 3. **Your own accounts and branding.**
    Your TikTok/social accounts, your own logo files, name, and handle per
    account. Store them per account — accounts do not share one brand.
+   A neutral STARTER brand ships in the project so nothing starts broken:
+   `config/starter.json` + `config/presets/starter.json`, with placeholder
+   artwork at `assets/starter_logo.png` and `assets/starter_wordmark.png`.
+   Start from the starter, replace the placeholders with your own, and run
+   with your own preset (see INSTALL_AND_SETUP.md, step 4).
 
 4. **Music beds.**
    The standing bed, "Crypto" by Kevin MacLeod (CC BY 4.0), IS included in
@@ -42,8 +47,8 @@ it. Each one comes from the owner or from a separate step.
    build your own map (see FRIEND_CLIPPER_RULES.md section 1).
 
 Note on branding inside the project: the project contains the ORIGINAL
-owner's account configs and one of his logos. Those are his brands — do not
-post with them. Replace them with your owner's own (point 3).
+owner's account configs (`political_lens`, `open_debate`). Those are his
+brands — do not post with them. Build yours from the starter (point 3).
 
 7. **Your own machine setup.**
    A Windows PC with the environment in INSTALL_AND_SETUP.md, enough disk for

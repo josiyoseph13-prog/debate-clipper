@@ -16,6 +16,11 @@ accounts, logos, names, and handles wherever a brand is mentioned.
   systems, religion, race. Lead with the single hottest moment.
 - Hot clips are ONLY the hot moment: open at the clash, short, direct,
   fast-paced. No slow build-up.
+- Length: aim for about 40–60 seconds. Go shorter or longer only when the
+  exchange itself demands it.
+- SWAP RULE: if the original source video cannot be found and proven, change
+  the clip — pick a different moment. Never fall back to using another
+  editor's finished video as the source.
 - A proven way to find moments: study the biggest videos of the top clipper in
   the niche, use them only as a MAP to the original full source video, download
   that original, and make your own edit. Never re-upload another editor's
@@ -49,6 +54,14 @@ accounts, logos, names, and handles wherever a brand is mentioned.
 
 ## 3. Framing
 
+- FULL-FRAME LAW: the picture fills the whole 9:16 frame — speaker framing,
+  not a wide strip floating in blur. Blurred bands above and below the video
+  (blur-fill / letterbox) are a FAILED export; never deliver one. If the
+  render report says the framing was "Not measured" or that a "safe wide
+  layout" was used, the build is NOT done: the framing inputs are missing
+  (the vision package from setup, the face-landmarker model). Fix the setup
+  and render again until the framing is measured and the frame is filled.
+  The checker verifies the fill on the contact sheet of every delivery.
 - Frame 0 shows the speaking person clearly. In solo shots the subject is
   centred (face near canvas centre).
 - NO hard split screen, ever. When both people appear, blend them SOFTLY — no
@@ -68,6 +81,9 @@ accounts, logos, names, and handles wherever a brand is mentioned.
   2% is the fail line). Frame containment: only the intended view in frame —
   no split slivers or edges of another view. The checker inspects wide shots
   at FULL SIZE for any visible seam line.
+- ZERO FOREIGN CAPTIONS: the final frame carries only your own captions. The
+  source's burned-in subtitles, captions, or watermarks must never be visible
+  in the delivered clip — frame them out or pick another moment.
 
 ## 4. Headline / hook
 
@@ -117,12 +133,18 @@ accounts, logos, names, and handles wherever a brand is mentioned.
 
 ## 8. Quality gates (the checker, every clip)
 
+The checker is never the builder — a separate pair of eyes checks every
+delivery, in full, and writes the report.
+
 1. Full decode passes; size + MD5 recorded.
 2. Frame 0: speaker clearly shown and centred.
 3. Every shot's shape true versus source; every wide shot seam-free at full
    size; frame containment clean.
 4. Caption case (ALL-CAPS), chunk size, and green-word timing spot-checked
    against the audio.
+   Sync: sound and picture must be locked — at the checked moments the spoken
+   word, the lit caption word, and the speaker's mouth agree. A clip that is
+   out of sync at any checked moment fails, however good its averages look.
 5. Listening audit: every piece starts and ends on complete sentences; lines
    answer each other.
 6. Loudness reads −19.5 LUFS; music hits sit on the cuts.
@@ -139,3 +161,13 @@ accounts, logos, names, and handles wherever a brand is mentioned.
 - Never hide a fault behind averages or measurements; the owner's eye and ear
   overrule every instrument.
 - Never work on two clips at once unless the owner says so.
+
+## 10. Posting (only when the owner asks you to post or write descriptions)
+
+- Descriptions: 3,000 characters, counted in the app's own measure.
+- Hashtags must be picked from the app's suggestion list (tap the entry
+  showing view counts) so they land as real hashtags — never typed or pasted
+  as plain text. A hashtag that is difficult to tap may be skipped rather
+  than blocking the post.
+- The owner is the final eye: nothing is posted or filed as final before the
+  owner has seen the finished clip and approved it.

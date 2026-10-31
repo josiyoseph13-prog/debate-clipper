@@ -90,7 +90,7 @@ def render_chrome(config: AppConfig, headline: str = "", output_path: Path | Non
     image.paste(avatar, (int(logo["x"]), int(logo["y"])), mask)
 
     brand = brand or {}
-    wordmark = str(brand.get("wordmark", "POLITICAL LENS"))
+    wordmark = str(brand.get("wordmark") or config.get("brand", "wordmark", default="YOUR CHANNEL"))
     lettering_text = "POLITICALLENS" if wordmark == "POLITICAL LENS" else wordmark
     handle = str(brand.get("handle", header["handle"]["text"]))
     wx = int(header["wordmark"]["x"])

@@ -98,7 +98,15 @@ def run_doctor() -> dict[str, Any]:
             registered=model_spec(name)
             checks.append({"name":"model_registry:"+name,"status":"pass","value":registered["license"]})
         except (ValueError,RuntimeError) as exc:
-            checks.append({"name":"model_registry:"+name,"status":"fail","value":str(exc)})
+            optional_missing = (
+                isinstance(exc, ValueError)
+                and str(exc).startswith("Missing or escaping model file")
+                and registry.get("models", {}).get(name, {}).get("default_enabled") is False
+            )
+            if optional_missing:
+                checks.append({"name":"model_registry:"+name,"status":"warn","value":str(exc),"message":"optional model not installed; it is disabled by default and nothing downloads implicitly"})
+            else:
+                checks.append({"name":"model_registry:"+name,"status":"fail","value":str(exc)})
     if config:
         calibration = ROOT / "config" / "caption_calibration.json"
         calibration_result = calibrate_caption(config, calibration)

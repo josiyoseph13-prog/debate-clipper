@@ -1,1 +1,1 @@
-{"config":"config/political_lens.json","name":"open_debate","overrides":{"header":{"badge":{"x":614},"handle":{"text":"@_open_debate"},"logo":{"file":"assets/accounts/open_debate_logo.jpg"},"wordmark":{"file":"assets/wordmark_open_debate.png"}}},"schema_version":5}
+{"config":"config/political_lens.json","name":"open_debate","overrides":{"brand":{"wordmark":"OPEN DEBATE"},"header":{"badge":{"x":614},"handle":{"text":"@_open_debate"},"logo":{"file":"assets/accounts/open_debate_logo.jpg"},"wordmark":{"file":"assets/wordmark_open_debate.png"}}},"schema_version":5}

@@ -10,7 +10,7 @@ $env:PYTHONIOENCODING = 'utf-8'
 [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
 Set-Location $PSScriptRoot
 
-Write-Host '=== POLITICAL LENS setup ===' -ForegroundColor Cyan
+Write-Host '=== Debate Clipper setup ===' -ForegroundColor Cyan
 if (-not $PythonPath) {
   foreach ($Name in @('py', 'python')) {
     $Command = Get-Command $Name -ErrorAction SilentlyContinue
@@ -43,6 +43,11 @@ if ($Legacy) {
   & $VenvPython -m pip install -r requirements.txt
 } else {
   & $VenvPython -m pip install --require-hashes -r requirements.lock
+  if ($LASTEXITCODE -ne 0) { throw 'Core dependency installation failed; setup is incomplete.' }
+  & $VenvPython -m pip install --require-hashes -r requirements-asr-windows.lock
+  if ($LASTEXITCODE -ne 0) { throw 'ASR dependency installation failed; setup is incomplete.' }
+  & $VenvPython -m pip install --require-hashes -r requirements-vision-windows.lock
+  if ($LASTEXITCODE -ne 0) { throw 'Vision dependency installation failed; setup is incomplete.' }
 }
 if ($LASTEXITCODE -ne 0) { throw 'Dependency installation failed; setup is incomplete.' }
 if (-not $Legacy) {

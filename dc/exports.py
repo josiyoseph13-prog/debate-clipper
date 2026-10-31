@@ -200,8 +200,9 @@ def _build_export_bundle(export_dir: Path, output: Path, plan: dict[str, Any], t
         reasons = [*reasons, "qa_" + str(qa_report.get("status", "missing"))]
     atomic_write_json(export_dir / "publish_dry_run.json", {"schema_version": 5, "allowed": allowed, "reasons": reasons, "privacy": "private", "require_click": True})
     rating = "Great" if float(candidate.get("score", 0)) >= 90 else "Good" if float(candidate.get("score", 0)) >= 80 else "Okay" if float(candidate.get("score", 0)) >= 70 else "Weak"
+    brand_wordmark = str((config or _PublishConfig()).get("brand", "wordmark", default="YOUR CHANNEL") or "YOUR CHANNEL")
     about = "\n".join([
-        "POLITICAL LENS CLIP",
+        f"{brand_wordmark} CLIP",
         "",
         f"Source video: {metadata['source_title']}",
         f"Source file: {source.get('path', '')}",

@@ -18,12 +18,31 @@ have it:
      will fail caption/render checks.
    - Node.js (24+) for the Studio tooling/tests
    - yt-dlp for downloads
-   - Project Python packages installed from the project's own requirements
-     (includes faster-whisper for transcription, OpenCV, Pillow)
+   - Project Python packages — run the project's `setup.ps1`. It installs
+     THREE pinned, hash-locked sets, and all three are required:
+     `requirements.lock` (core), `requirements-asr-windows.lock` (speech —
+     faster-whisper; without it every job dies at transcription),
+     `requirements-vision-windows.lock` (vision — mediapipe face tracking;
+     without it framing cannot be measured and renders fall back to a
+     blurred wide strip, which the house rules treat as a failed export).
 3. Run the project's own health check (`dc doctor` from the project folder)
-   and fix every hard failure before going further. Asset/config warnings
-   about logos/wordmarks are expected until you add your own branding.
-4. Start Studio (the project's start script; Studio served locally, port 8765
+   and fix every hard failure before going further. Warnings about optional
+   models that are disabled by default (for example the offline Whisper base
+   model, which is not shipped) are expected and do not block work.
+4. BRANDING — make it yours before the first real job. The repo ships a
+   neutral starter brand: `config/starter.json` +
+   `config/presets/starter.json`, with placeholder artwork at
+   `assets/starter_logo.png` and `assets/starter_wordmark.png`. Copy the
+   starter preset under your own name, replace the placeholders with your
+   logo and wordmark, and set your channel name and handle. Run jobs with
+   `--preset <yours>`. The `political_lens` and `open_debate` configs are
+   the ORIGINAL owner's accounts — never post with them. In your own clone
+   you may also copy your finished config over `config/political_lens.json`
+   so the default path, the health check, and the test suite all use your
+   brand; one test (`test_real_logo_artwork_is_used_without_redrawing`)
+   checks exactly that your supplied logo artwork is used, and it fails
+   until your own brand is in place.
+5. Start Studio (the project's start script; Studio served locally, port 8765
    in the original setup) and open it in a browser.
 
 Honest notes about the project as it stands:
@@ -69,15 +88,19 @@ on first run.
 ## Proof tests (both required, report results as files/numbers)
 
 TEST 1 — Project: run `dc doctor`, then run the project's test suite
-(pytest — the original machine had 99 tests passing). Then add one short
-public debate video in Studio, let it transcribe and rank candidates, and
-export one candidate. Report: doctor output, test count, export file size +
-MD5 + pixel format (must be yuv420p).
+(pytest). Then add one short public debate video in Studio, let it
+transcribe and rank candidates, and export one candidate. Report: doctor
+output, test count, export file size + MD5 + pixel format (must be
+yuv420p).
 
 TEST 2 — Tools: with ffprobe, report the streams, duration, and loudness of
-the Test 1 export, and extract a 20-frame contact sheet at full size from it.
-Report the numbers and the sheet file. This proves your FFmpeg side works
-independently of the project.
+the Test 1 export, and extract a 20-frame contact sheet at full size from
+it. Report the numbers and the sheet file. This proves your FFmpeg side
+works independently of the project. The contact sheet is also a framing
+gate: the picture must FILL the frame (speaker framing). Blurred bands
+above/below a wide strip of video mean the framing was never measured —
+that is a FAIL, not a style. Fix the vision setup (step 2) and render
+again; never accept a blur-filled export.
 
 Only after both tests pass do you build the owner's ONE test clip under the
 full rules in FRIEND_CLIPPER_RULES.md, with the separate checker, for the

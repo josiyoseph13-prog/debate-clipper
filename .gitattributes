@@ -10,3 +10,11 @@
 *.pdf binary
 *.zip binary
 *.onnx binary
+*.bin binary
+*.task binary
+
+# Model registry files are verified byte-for-byte against SHA-256 hashes in
+# assets/models/registry.json. Line-ending conversion on checkout would change
+# their bytes and fail the project's own health check, so nothing under
+# assets/models/ is ever text-converted.
+assets/models/** -text

@@ -1,6 +1,9 @@
 {
   "schema_version": 5,
   "preset": "PL-2",
+  "brand": {
+    "wordmark": "POLITICAL LENS"
+  },
   "canvas": {
     "w": 1080,
     "h": 1920,

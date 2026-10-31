@@ -1,0 +1,445 @@
+{
+ "schema_version": 5,
+ "preset": "ST-1",
+ "brand": {
+  "wordmark": "YOUR CHANNEL"
+ },
+ "canvas": {
+  "w": 1080,
+  "h": 1920,
+  "bg": "#FFFFFF"
+ },
+ "regions": {
+  "top_reserved": {
+   "y": 0,
+   "h": 138
+  },
+  "header": {
+   "x": 108,
+   "y": 138,
+   "w": 620,
+   "h": 158
+  },
+  "hook": {
+   "x": 140,
+   "top_limit": 320,
+   "bottom": 490,
+   "last_baseline": 480,
+   "w": 800
+  },
+  "gap": {
+   "y": 490,
+   "h": 19
+  },
+  "feed": {
+   "x": 0,
+   "y": 509,
+   "w": 1080,
+   "h": 1216
+  },
+  "bottom_white": {
+   "y": 1725,
+   "h": 195
+  }
+ },
+ "header": {
+  "logo": {
+   "d": 158,
+   "x": 108,
+   "y": 138,
+   "file": "assets/starter_logo.png",
+   "user_supplied": true,
+   "transparent": false
+  },
+  "wordmark": {
+   "x": 276,
+   "cap_top": 170,
+   "cap_h": 64,
+   "ink_w": 390,
+   "file": "assets/starter_wordmark.png",
+   "live_font": "assets/fonts/Anton-Regular.ttf"
+  },
+  "handle": {
+   "text": "@yourchannel",
+   "x": 303,
+   "ink_top": 247,
+   "ink_w": 278,
+   "font": "assets/fonts/Poppins-Regular.ttf",
+   "color": "#7F7F7F"
+  },
+  "badge": {
+   "mode": "brand_check",
+   "d": 50,
+   "x": 677,
+   "y": 176,
+   "color": "#4DD0E2"
+  }
+ },
+ "hook": {
+  "font": "assets/fonts/Poppins-SemiBold.ttf",
+  "color": "#0A0A0A",
+  "px_range": [
+   50,
+   40
+  ],
+  "line_pitch": 1.04,
+  "max_lines": 3,
+  "max_w": 800,
+  "center_x": 540,
+  "stance_headlines": false,
+  "target_chars": 52,
+  "hard_chars": 78,
+  "emoji_font": "assets/fonts/NotoColorEmoji.ttf",
+  "emoji_strike_px": 109
+ },
+ "captions": {
+  "style": "hormozi_glow",
+  "font_file": "assets/fonts/Montserrat-ExtraBold.ttf",
+  "font_family": "Montserrat ExtraBold",
+  "target_cap_px": 44,
+  "target_word_w_RIGHT": 172,
+  "spacing": 0,
+  "base": "#FFFFFF",
+  "active": "#B4F83D",
+  "alt_active": "#FFE600",
+  "emphasis": "#FF3B30",
+  "stroke": "#000000",
+  "stroke_px": 5,
+  "shadow_px": 2,
+  "glow": {
+   "method": "ass_layers",
+   "color": "#B4F83D",
+   "outer_bord": 18,
+   "outer_blur": 16,
+   "outer_alpha": 104,
+   "inner_bord": 9,
+   "inner_blur": 6,
+   "inner_alpha": 48
+  },
+  "center_x": 540,
+  "center_y_canvas": 1112,
+  "slot_ladder": [
+   1112,
+   1072,
+   1152,
+   1032,
+   1192,
+   992,
+   1232
+  ],
+  "uppercase": true,
+  "strip_punct": true,
+  "max_group_chars": 16,
+  "merge_short_chars": 3,
+  "pause_hide_s": 0.6,
+  "min_group_s": 0.3,
+  "max_words_per_s": 3.0,
+  "max_w": 800,
+  "x_limits": [
+   140,
+   940
+  ],
+  "bottom_max": 1480,
+  "plate_fallback": {
+   "alpha": 0.6,
+   "radius": 14,
+   "pad": 18
+  },
+  "halo_px": 45,
+  "dy": 6.5,
+  "font_size": 110,
+  "scale_x": 92,
+  "min_cap_px": 36,
+  "pop": {
+   "enabled": true,
+   "from": 0.82,
+   "peak": 1.08,
+   "up_ms": 90,
+   "settle_ms": 80
+  }
+ },
+ "safe_zone": {
+  "profile": "balanced"
+ },
+ "framing": {
+  "analysis_fps": 6,
+  "landmark_fps": 15,
+  "mouth_window_s": 0.8,
+  "proxy_width": 640,
+  "min_face_px": 48,
+  "phi_target": 0.2,
+  "s_max": 1.5,
+  "tau_follow": 0.35,
+  "tau_slow": 0.8,
+  "deadzone_x": 0.04,
+  "deadzone_y": 0.05,
+  "fps_cap": 30,
+  "divider_px": 4,
+  "min_dwell_s": 1.5,
+  "switch_hold_s": 0.6,
+  "switch_margin": 0.25,
+  "dual_min_dwell_s": 3,
+  "head_y_frac": 0.33,
+  "phi_panel": 0.25,
+  "vmax_wc_per_s": 0.25,
+  "face_detector": null,
+  "face_landmarker": "face_landmarker"
+ },
+ "selection": {
+  "weights": {
+   "narrative": 18,
+   "conflict": 15,
+   "hook": 14,
+   "clarity": 13,
+   "rebuttal": 10,
+   "ending": 9,
+   "context": 9,
+   "acoustic": 5,
+   "crowd": 7
+  },
+  "auto_threshold": 90,
+  "target_s": [
+   25,
+   55
+  ],
+  "hard_min_s": 8,
+  "hard_max_s": 180,
+  "mmr_lambda": 0.7
+ },
+ "polish": {
+  "punch_in": {
+   "enabled": false,
+   "max_zoom": 1.06
+  },
+  "tight_cut": {
+   "enabled": false,
+   "min_pause_s": 1.2,
+   "to_s": 0.35,
+   "max_fraction": 0.15
+  },
+  "nameplates": {
+   "enabled": false,
+   "show_s": 1.2
+  },
+  "progress_bar": {
+   "enabled": false,
+   "y": 1748,
+   "h": 6
+  },
+  "source_credit": {
+   "enabled": false,
+   "y": 1790,
+   "px": 28
+  },
+  "cover_frame": true,
+  "metadata_pack": true
+ },
+ "audio": {
+  "loudnorm": true,
+  "window_loudnorm": true,
+  "target_lufs": -14,
+  "true_peak_db": -1,
+  "fade_ms": 30,
+  "denoise": false,
+  "music_file": null,
+  "music_licensed": false,
+  "music_gain": 0.06,
+  "sfx_file": null,
+  "sfx_licensed": false
+ },
+ "output": {
+  "crf": 18,
+  "preset": "veryfast",
+  "pix_fmt": "yuv420p",
+  "audio_kbps": 160,
+  "fps_cap": 30,
+  "audio_hz": 48000,
+  "encoder": "h264_qsv"
+ },
+ "asr": {
+  "model": null,
+  "vad_filter": true,
+  "condition_on_previous_text": false,
+  "glossary_file": "config/glossary.json",
+  "auto_glossary_from_metadata": true,
+  "correction_min_score": 0.92,
+  "device": "cuda",
+  "compute_type": "int8_float16"
+ },
+ "asd": {
+  "enabled": true,
+  "temperature": 0.5,
+  "min_track_obs": 120
+ },
+ "diarization": {
+  "engine": "auto",
+  "candidates": [
+   "sherpa_onnx",
+   "pyannote"
+  ]
+ },
+ "signals": {
+  "crowd_replay": {
+   "enabled": true,
+   "weight": 7,
+   "anchor_percentile": 90
+  },
+  "crowd_mentions": {
+   "enabled": false,
+   "max_comments": 500,
+   "bin_s": 15,
+   "store_text": false
+  },
+  "reaction_events": {
+   "enabled": true,
+   "min_conf": 0.5,
+   "window_after_s": 2.0,
+   "keep_reaction_s": 0.0
+  },
+  "source_hygiene": {
+   "enabled": true,
+   "max_overlap": 0.1
+  }
+ },
+ "semantic": {
+  "l1_enabled": false,
+  "gate": {
+   "metrics": [
+    "recall@10",
+    "precision@90"
+   ],
+   "ci": 0.95,
+   "min_n": 100
+  },
+  "models": {
+   "embedding": null,
+   "nli": null,
+   "qa_relevance": null
+  },
+  "evasion": {
+   "sim_tau": null,
+   "drift_s": 8
+  },
+  "receipts": {
+   "enabled": true,
+   "min_gap_s": 60,
+   "sim_tau": null,
+   "contradiction_tau": null,
+   "qualifier_window_s": 30,
+   "auto_allowed": false
+  },
+  "llm": {
+   "enabled": false,
+   "provider": null,
+   "top_n": 20,
+   "send": "transcript_text_only"
+  }
+ },
+ "craft": {
+  "question_chip": {
+   "enabled": true,
+   "max_chars": 90,
+   "show_s": 2.5,
+   "px": 30
+  },
+  "evidence_cards": {
+   "enabled": false,
+   "show_s": 1.8
+  },
+  "caption_mode": "hormozi_glow",
+  "emoji_pops": {
+   "enabled": false
+  },
+  "claim_gate": true
+ },
+ "renderer": {
+  "camera": "subpixel",
+  "interp": "lanczos4",
+  "static_threshold_px": 0.25,
+  "queue_frames": 8,
+  "color": {
+   "matrix": "bt709",
+   "range": "tv"
+  }
+ },
+ "distribution": {
+  "export_bundle": [
+   "srt",
+   "vtt",
+   "ass",
+   "otio",
+   "fcpxml",
+   "edl"
+  ],
+  "publish": {
+   "enabled": false,
+   "default_privacy": "private",
+   "block_flags": [
+    "review",
+    "block_auto_approve"
+   ],
+   "block_rights": [
+    "unknown"
+   ]
+  }
+ },
+ "translation": {
+  "enabled": false,
+  "targets": [],
+  "model": null,
+  "label": "machine_translated"
+ },
+ "learning": {
+  "label_log": true,
+  "taste_ranker": {
+   "enabled": false,
+   "min_labels": 150,
+   "min_cv_auc": 0.7,
+   "max_blend": 0.3
+  },
+  "analytics": {
+   "min_clips": 60,
+   "model": "ridge",
+   "cv": "loo"
+  }
+ },
+ "security": {
+  "bind": "127.0.0.1",
+  "lan": {
+   "enabled": false,
+   "token_bytes": 24,
+   "read_only_default": true
+  },
+  "csp": "default-src 'self'",
+  "secrets": "os_keyring"
+ },
+ "ops": {
+  "low_priority": true,
+  "prevent_sleep": true,
+  "work_retention_days": 14,
+  "min_free_disk_x_source": 3,
+  "battery_pause_percent": 20,
+  "max_retries": 1
+ },
+ "analysis": {
+  "scene_threshold": 0.35,
+  "scene_fps": 2,
+  "scene_width": 320,
+  "layout_samples": 3
+ },
+ "qa": {
+  "chrome_samples": 12,
+  "caption_samples": 20,
+  "chrome_mae": 2.5,
+  "bottom_guard_px": 4,
+  "max_audio_offset_ms": 40,
+  "duration_tolerance_s": 0.1
+ },
+ "source_text": {
+  "detect": true,
+  "trust_source_captions": false
+ },
+ "models": {
+  "manifest": "assets/models/registry.json"
+ }
+}
